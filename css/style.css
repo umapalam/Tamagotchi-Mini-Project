@@ -1,0 +1,46 @@
+body {
+    background-color: cornflowerblue;
+}
+
+#oval{
+    width: 500px;
+    height: 525pt;
+    background: rgb(0, 68, 255);
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 300px;
+    margin: 9% auto;
+    position: relative;
+}
+
+#screen{    
+    height: 45%;
+    width: 65%;
+    margin: auto;
+    border: 6px solid powderblue;
+    background-color: rgb(172, 172, 172);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 20%;
+}
+
+#setButtons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    padding-top: 500px;
+    
+}
+
+.button {
+    text-align: center; 
+    border-radius: 10em;
+    border: 0;
+}
+
+
+
+
+
