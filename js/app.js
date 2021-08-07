@@ -34,8 +34,21 @@ class Tamagotchi {
       this.hunger += 1;  
     }
 
+    lessHungry = () => {
+        this.hunger -= 1;  
+    }
+
+    lessSleepy = () => {
+        this.sleepiness -=1; 
+    }
+
+    lessBored = () => {
+        this.boredom -=1; 
+    }
+
+
     goSleepy = () => {
-        this.sleepiness += 1;
+        this.sleepiness +=1;
     }
 
     goBored = () => {
@@ -57,81 +70,130 @@ const submitButton = document.querySelector(".petnamebutton");
 submitButton.addEventListener("click", handleClickEvent) 
 
 let petName = "";
+let pet;
+
 function handleClickEvent(){
     //code to run once the event fires
     petName = document.querySelector(".name").value;
     //pet.setPetName(petName);
     console.log("Petname in click = "+petName);
-}
-
-function updateStats(){
-    let age = document.querySelector('#age');
-    age.textContent = `Age: ${pet.getAge()}`;
-    let hunger = document.querySelector('#hunger');
-    hunger.textContent = `Hunger: ${pet.getHunger()}`;
-    let sleep = document.querySelector('#sleepiness');
-    sleep.textContent = `Sleepiness: ${pet.getSleepiness()}`;
-    let boredom = document.querySelector('#boredom');
-    boredom.textContent = `Boredom: ${pet.getBoredom()}`;
-}
-
-function resetStats(){
-    pet.age = 1;
-    pet.hunger = 1;
-    pet.boredom = 1;
-    pet.sleepiness = 1;
-}
-
-function sleep(seconds){
-    let waitUntil = new Date().getTime() + seconds*1000;
-    while(new Date().getTime() < waitUntil)
-        true;
-}
-
-
-let play = () => {
-    
-    let start = true;
-    let timeCounter = 0;
-    let minuteCounter = 0;
-
-    while (start == true){
-        timeCounter++;
-
-        
-        if (timeCounter % 60 == 0){
-            pet.goHungry();
-            pet.goSleepy();
-            pet.goBored();
-            pet.goOlder();
-            
-            timeCounter = 0;
-            minuteCounter++;
-            console.log("Minute is now: "+minuteCounter);
-        }
-        
-        //console.log("Hunger = "+pet.getHunger());
-        if (minuteCounter == 5){
-            console.log("Hunger = "+pet.getHunger());
-            start = false;
-        }
-       
-    }
-}
-
-if ( petName == ""){
-    console.log("Please enter a pet name to play the game");
-} else {
     console.log("User entered a pet name = "+petName);
     console.log("Creating a pet now...");
-    let pet = new Tamagotchi(petName, 1,1,1,2,true); //instantiate pet
+    pet = new Tamagotchi(petName, 1,1,1,2,true); //instantiate pet
     console.log("Resetting stats...");
-    resetStats();
+    resetStats(pet);
     console.log("Updating stats...");
-    updateStats();
+    updateStats(pet);
     console.log("Play started...");
-    play();
-    updateStats();
+    play(pet);
+    updateStats(pet);
 }
 
-  
+const feedButton = document.querySelector(".feedButton");
+feedButton.addEventListener("click", handleFeedClickEvent1);
+
+function handleFeedClickEvent1(){
+    console.log("Feed button is clicked...");
+    pet.lessHungry();
+    updateStats(pet);
+}
+
+const sleepButton = document.querySelector(".sleepButton");
+sleepButton.addEventListener("click", handleFeedClickEvent2);
+
+function handleFeedClickEvent2(){
+    console.log("Sleep button is clicked...");
+    pet.lessSleepy();
+    updateStats(pet);
+}
+
+const playButton = document.querySelector(".playButton");
+playButton.addEventListener("click", handleFeedClickEvent3);
+
+function handleFeedClickEvent3(){
+    console.log("Play button is clicked...");
+    pet.lessBored();
+    updateStats(pet);
+}
+
+function updateStats(animal){
+    let age = document.querySelector('#age');
+    age.textContent = `Age: ${animal.getAge()}`;
+    let hunger = document.querySelector('#hunger');
+    hunger.textContent = `Hunger: ${animal.getHunger()}`;
+    let sleep = document.querySelector('#sleepiness');
+    sleep.textContent = `Sleepiness: ${animal.getSleepiness()}`;
+    let boredom = document.querySelector('#boredom');
+    boredom.textContent = `Boredom: ${animal.getBoredom()}`;
+}
+
+function resetStats(animal){
+    animal.age = 1;
+    animal.hunger = 1;
+    animal.boredom = 1;
+    animal.sleepiness = 1;
+}
+
+// const sleep = (milliseconds) => {
+//     return new Promise(resolve => setTimeout(resolve, milliseconds))
+// }
+
+
+// let play = (animal) => {
+    
+//     let start = true;
+//     let timeCounter = 0;
+
+//     while (start == true){
+
+//         timeCounter++;
+
+//         if (timeCounter % 60000 == 0){
+//             animal.goHungry();
+//             animal.goSleepy();
+//             animal.goBored();
+//             animal.goOlder();
+            
+//             timeCounter = 0;
+//             console.log("timer up");
+//         }
+        
+//         console.log("Hunger = "+pet.getHunger());
+//         let hungerCount = animal.getHunger();
+//         let sleepyCount = animal.goSleepy();
+//         let boredCount = animal.goBored();
+//         if (hungerCount == 10 || sleepyCount == 10 || boredCount == 10){
+//             console.log("Hunger = "+animal.getHunger());
+//             start = false;
+//         }      
+//     }
+// }
+
+let play = (animal) => {
+    let time = 0;
+    let interval = setInterval(  () =>{
+            console.log("a second")
+
+            time++; 
+            console.log(time)
+            if (time % 3 == 0){
+                animal.goHungry();
+                animal.goSleepy();
+                animal.goBored();
+                animal.goOlder();
+                console.log("every 3 seconds"); 
+                updateStats(animal)
+            }
+            console.log("Hunger = "+pet.getHunger());
+            let hungerCount = animal.getHunger();
+            let sleepyCount = animal.getSleepiness();
+            let boredCount = animal.getBoredom();
+            if (hungerCount == 10 || sleepyCount == 10 || boredCount == 10){
+                console.log("Hunger = "+animal.getHunger());
+                start = false;
+                clearInterval(interval)
+            }  
+            
+    }, 3000)
+
+} 

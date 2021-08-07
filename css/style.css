@@ -46,7 +46,7 @@ form button {
     width: 65%;
     margin: auto;
     border: 6px solid powderblue;
-    background-color: rgb(172, 172, 172);
+    background-color: grey;
     position: absolute;
     left: 0;
     right: 0;
@@ -61,6 +61,13 @@ form button {
     z-index: 2;
 }
 
+#morphpet{
+    display: flex;
+    animation: shimmy 3s infinite;
+    animation-direction: alternate;
+    z-index: 2;
+}
+
 @keyframes shimmy {
     0% {
         transform: translate(0,0);
@@ -69,6 +76,7 @@ form button {
         transform: translate(20px, 50px);
     }
 }
+
 
 .setButtons{
     display: flex;
