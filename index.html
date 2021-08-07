@@ -9,16 +9,42 @@
     <script src="js/app.js" defer></script>
 </head>
 
-<body>
-    <div id = "oval">
-        <div id = "screen"></div>
-        <div id = "setButtons">
-            <div id = "feedButton" class = "button" ><button class = "w3-button w3-pink">Feed</button></div>
-            <div id = "sleepButton" class = "button"><button class = "w3-button w3-pink">Sleep</button></div>
-            <div id = "playButton" class = "button"><button class = "w3-button w3-pink">Play</button></div>
+<body> 
+    <header>
+        <form class="userInput">
+            <input type="text" class='name' placeholder="Enter Pet Name">
+            <button class= "petnamebutton" type= "button" >Submit</button>
+        </form>
+    </header>
+    <main class="oval">
+        <div class="statistics">
+            <ul>
+                <li id="age" class="stat"></li>
+                <li id="hunger" class="stat"></li>
+                <li id="sleepiness" class="stat"></li>
+                <li id="boredom" class="stat"></li>
+            </ul>
         </div>
-    </div>
+        <div class = "screen">
+            <!-- <img id = "nightImage" src='images/night.png' alt="Night Landscape" width="325" height="315">  -->
+            <img id = "pet" src='images/pet.png' alt="Pet Bird" width="100" height="100">
+            
+            <div class = "element">
+                <!-- <img id = "morphpet" src= "images/morphpet.png" alt="Morphed Bird" width="200" height="200">  -->
+            </div> 
+            <!-- <section>
+                <div id="die">
+                <h1>Game Over!</h1>
+                <img id = "deadpet" src= "images/deadpet.png" alt="Dead Bird" width="100" height="100">
+                </div>
+            </section>   -->
+        </div>
+        <div class = "setButtons">
+            <div class = "feedButton"><button>Feed</button></div>
+            <div class = "sleepButton"><button>Sleep</button></div>
+            <div class = "playButton"><button>Play</button></div>
+        </div>
+    </main>
 </body>
 
-</html>
-
+</html> 

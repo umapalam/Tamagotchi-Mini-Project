@@ -1,8 +1,26 @@
-body {
+body{
     background-color: cornflowerblue;
 }
 
-#oval{
+form input {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+	font-size: 20px;
+}
+
+input::placeholder {
+	font-size: 20px;
+    text-align: center;
+}
+
+form button {
+	display: flex;
+    justify-content: center;
+	margin: auto;
+}
+
+.oval{
     width: 500px;
     height: 525pt;
     background: rgb(0, 68, 255);
@@ -13,7 +31,17 @@ body {
     position: relative;
 }
 
-#screen{    
+.statistics{
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+.stat{
+    list-style: none;
+}
+
+.screen{    
     height: 45%;
     width: 65%;
     margin: auto;
@@ -23,24 +51,46 @@ body {
     left: 0;
     right: 0;
     top: 20%;
+    z-index: 1;
 }
 
-#setButtons{
+#pet{
+    display: flex;
+    animation: shimmy 3s infinite;
+    animation-direction: alternate;
+    z-index: 2;
+}
+
+@keyframes shimmy {
+    0% {
+        transform: translate(0,0);
+    }
+    100%{
+        transform: translate(20px, 50px);
+    }
+}
+
+.setButtons{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: flex-end;
-    padding-top: 500px;
+    padding-top: 400px;
     
 }
 
-.button {
+/* .button {
     text-align: center; 
     border-radius: 10em;
     border: 0;
+
+#nightImage{
+    position: absolute;
+    z-index: 2;
+}  
+
+#pet{
+    position: absolute;
+    z-index: 2;
 }
-
-
-
-
-
+*
