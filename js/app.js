@@ -1,8 +1,8 @@
 console.log("Tamagotchi-Mini-Project")
 
 class Tamagotchi {
-    constructor (name, hunger, sleepiness, boredom, age){
-        this.name = " "; 
+    constructor (name){
+        this.name = name 
         this.hunger = 1; 
         this.boredom = 1; 
         this.sleepiness = 1; 
@@ -55,8 +55,12 @@ class Tamagotchi {
         this.boredom += 1;
     }
 
-    goOlder = (age) => {
+    goOlder = () => {
         this.age += 1;
+        if(this.age >= 4){
+            let currentPetImage = document.getElementById('pet'); 
+            currentPetImage.src = "./images/morphpet.png"
+        }
     }
 
     setPetName = (name) => {
@@ -79,7 +83,7 @@ function handleClickEvent(){
     console.log("Petname in click = "+petName);
     console.log("User entered a pet name = "+petName);
     console.log("Creating a pet now...");
-    pet = new Tamagotchi(petName, 1,1,1,2,true); //instantiate pet
+    pet = new Tamagotchi(petName); //instantiate pet
     console.log("Resetting stats...");
     resetStats(pet);
     console.log("Updating stats...");
@@ -184,6 +188,7 @@ let play = (animal) => {
                 console.log("every 2 seconds"); 
                 updateStats(animal)
             }
+
             console.log("Hunger = "+pet.getHunger());
             let hungerCount = animal.getHunger();
             let sleepyCount = animal.getSleepiness();
