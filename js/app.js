@@ -55,7 +55,7 @@ class Tamagotchi {
         this.boredom += 1;
     }
 
-    goOlder = () => {
+    goOlder = (age) => {
         this.age += 1;
     }
 
@@ -176,12 +176,12 @@ let play = (animal) => {
 
             time++; 
             console.log(time)
-            if (time % 3 == 0){
+            if (time % 2 == 0){
                 animal.goHungry();
                 animal.goSleepy();
                 animal.goBored();
                 animal.goOlder();
-                console.log("every 3 seconds"); 
+                console.log("every 2 seconds"); 
                 updateStats(animal)
             }
             console.log("Hunger = "+pet.getHunger());
@@ -194,6 +194,6 @@ let play = (animal) => {
                 clearInterval(interval)
             }  
             
-    }, 3000)
+    }, 2000)
 
 } 

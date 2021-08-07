@@ -54,18 +54,26 @@ form button {
     z-index: 1;
 }
 
+#nightImage{
+    position: absolute;
+    z-index: 2;
+}   
+
+
 #pet{
     display: flex;
-    animation: shimmy 3s infinite;
+    animation: shimmy 2s infinite;
     animation-direction: alternate;
-    z-index: 2;
+    position: absolute;
+    z-index: 3;
 }
+
 
 #morphpet{
     display: flex;
-    animation: shimmy 3s infinite;
+    animation: shimmy 2s infinite;
     animation-direction: alternate;
-    z-index: 2;
+    z-index: 3;
 }
 
 @keyframes shimmy {
@@ -73,7 +81,7 @@ form button {
         transform: translate(0,0);
     }
     100%{
-        transform: translate(20px, 50px);
+        transform: translate(100px, 100px);
     }
 }
 
@@ -91,14 +99,10 @@ form button {
     text-align: center; 
     border-radius: 10em;
     border: 0;
+} */
 
 #nightImage{
     position: absolute;
     z-index: 2;
-}  
+}   
 
-#pet{
-    position: absolute;
-    z-index: 2;
-}
-*
